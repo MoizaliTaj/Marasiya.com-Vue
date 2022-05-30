@@ -1,6 +1,7 @@
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+import sys
 
 current_dir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__, template_folder="templates")
@@ -93,42 +94,43 @@ http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd">
             priority) + '</priority>\n</url>\n'
         xml_content = xml_content + Out_inst
     xml_content = xml_content + '\n</urlset>'
-    temp = open("sitemap.xml","w")
+    temp = open("../sitemap.xml","w")
     temp.write(xml_content)
     temp.close()
 
 
+file = open("../static/app.js","r")
+lines = file.readlines()
+file.close()
 
-file = open("output.txt","w")
-file.write("let database = [")
+firstline = ""
+firstline = firstline + "let database = ["
 categoryss = categorylist()
 for a in categoryss:
     category = a
     titles = titlelist(category)
-    file.write('{category:"'+str(category)+'",data:[')
+    firstline = firstline + '{category:"'+str(category)+'",data:['
     for i in titles:
-        file.write('{title:"'+str(i)+'",')
+        firstline = firstline + '{title:"'+str(i)+'",'
         audioinfo = kalaamdetails(category, i, "Audio")
         if audioinfo == "None":
-            file.write("audio:[],")
+            firstline = firstline + "audio:[],"
         else:
-            file.write("audio:[")
+            firstline = firstline + "audio:["
             for k in audioinfo:
-                file.write('{filename:"'+str(k[0])+'",audiolink:"https://docs.google.com/uc?export=download&id='+str(k[1])+'",downloadlink:"https://drive.google.com/uc?authuser=0&id='+str(k[1])+'&export=download"},')
-            file.write("],")
+                firstline = firstline + '{filename:"'+str(k[0])+'",audiolink:"https://docs.google.com/uc?export=download&id='+str(k[1])+'",downloadlink:"https://drive.google.com/uc?authuser=0&id='+str(k[1])+'&export=download"},'
+            firstline = firstline + "],"
         pdfinfo = kalaamdetails(category, i, "PDF")
         if pdfinfo == "None":
-            file.write("pdf:[],")
+            firstline = firstline + "pdf:[],"
         else:
-            file.write("pdf:[")
+            firstline = firstline + "pdf:["
             for k in pdfinfo:
-                file.write('{filename:"' + str(k[0]) + '",pdflink:"https://drive.google.com/file/d/' + str(k[1]) + '/preview",downloadlink:"https://drive.google.com/uc?authuser=0&id=' + str(k[1]) + '&export=download"},')
-            file.write("],")
-        file.write("},")
-    file.write("],},")
-file.write("]")
-print("database done")
-file.write("\n")
+                firstline = firstline + '{filename:"' + str(k[0]) + '",pdflink:"https://drive.google.com/file/d/' + str(k[1]) + '/preview",downloadlink:"https://drive.google.com/uc?authuser=0&id=' + str(k[1]) + '&export=download"},'
+            firstline = firstline + "],"
+        firstline = firstline + "},"
+    firstline = firstline + "],},"
+firstline = firstline + "]"
 category = categorylist()
 outstring="let titledata = {"
 for i in category:
@@ -140,9 +142,9 @@ for j in outstring:
         updatedstring = updatedstring + '_'
     else:
         updatedstring = updatedstring + j
-file.write(updatedstring)
-file.close()
-print("count Done")
+secondline = updatedstring
+lines[0] = firstline + "\n"
+lines[1] = secondline + "\n"
+file = open("../static/app.js","w")
+file.writelines(lines)
 sitemap_xml()
-print("Sitemap Done")
-input("All Done")
