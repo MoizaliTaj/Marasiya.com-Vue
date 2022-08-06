@@ -23,56 +23,30 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-HP0F1YQG4P');
     </script>
   </head>
   <body>
-    <div class="container" id="app">
-      <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-black">
-        <a class="navbar-brand" href="#">Marasiya.com</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><router-link class="nav-link" to="/Marasiya">Marasiya</router-link></li>
-            <li class="nav-item"><router-link class="nav-link" to="/Madeh">Madeh</router-link></li>
-            <li class="nav-item"><router-link class="nav-link" to="/Rasa">Rasa</router-link></li>
-            <li class="nav-item"><router-link class="nav-link" to="/Salaam">Salaam</router-link></li>
-            <li class="nav-item"><router-link class="nav-link" to="/Manaqabat">Manaqabat</router-link></li>
-            <li class="nav-item"><router-link class="nav-link" to="/Iltija">Iltija</router-link></li>
-            <li class="nav-item"><router-link class="nav-link" to="/Nasihat">Nasihat</router-link></li>
-            <li class="nav-item"><router-link class="nav-link" to="/Qasida">Qasida</router-link></li>
-            <li class="nav-item"><router-link class="nav-link" to="/Naat">Naat</router-link></li>
-            <li class="nav-item"><router-link class="nav-link" to="/Dua">Dua</router-link></li>
-            <li class="nav-item"><router-link class="nav-link" to="/Quran-Chapters">Quran-Surat</router-link></li>
-            <li class="nav-item"><router-link class="nav-link" to="/Quran-Juz">Quran-Juz</router-link></li>
-            <li class="nav-item"><router-link class="nav-link" to="/Namaz">Namaz</router-link></li>
-            <li class="nav-item"><router-link class="nav-link" to="/Misc">Misc</router-link></li>
-          </ul>
-        </div>
-      </nav>
+    <div id="loading">Loading App.<br>This may take a while depending on your network speed.<br>Please wait...</div>
+    <div class="container-fluid" id="app">
+      <Navbar></Navbar>
       <router-view></router-view>
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6804075268466793"
-      crossorigin="anonymous"></script>
-      <!-- Marasiya_FAPP -->
-      <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-6804075268466793"
-            data-ad-slot="4128170514"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
-      <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-      <hr>
-      <footer class="text-center text-lg-start bg-light text-muted footercustom">
-        <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.05);color: #052465;">
-        Created by Moizali
-        </div>
-      </footer>
+      <Foot></Foot>
+      <br><br><br><br><br><br><br>
     </div>
+    <p>Google Adds</p>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6804075268466793"
+    crossorigin="anonymous"></script>
+    <!-- Marasiya_FAPP -->
+    <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-6804075268466793"
+          data-ad-slot="4128170514"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+    <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
   </body>
   <script src="static/app.js" ></script>
   <script>

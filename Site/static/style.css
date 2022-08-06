@@ -1,0 +1,63 @@
+body{
+  background-color: #fcde67;
+  font-size: Medium;
+  color: #052465;
+}
+
+table, tr, td,th {
+  border: 1px solid black;
+  border-collapse:collapse;
+  padding:5px;
+}
+
+.user{
+  color:white;
+}
+
+.footercustom {
+  background-color: rgba(0, 0, 0, 0.05);color: #052465;
+}
+
+a {
+  color: #052465;
+  text-decoration: none;
+  font-size: large;
+}
+a:hover {
+  color: rgb(15, 74, 200);
+  text-decoration: none;
+  font-size: large;
+}
+
+.homesmall{
+  font-size: small;
+  padding-bottom: 5px;
+}
+
+.button {
+  appearance: none;
+  background-color: black;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.button:hover {
+  background-color: #2c974b;
+}
