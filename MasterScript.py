@@ -558,4 +558,4 @@ def update_app_js():
 update_MasterDB()
 sitemap_xml()
 update_app_js()
-input("All Steps Done")
+print("All Steps Done")
