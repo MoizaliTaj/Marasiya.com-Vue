@@ -226,14 +226,6 @@ const Foot = Vue.component('foot', {
     template:`<footer class="bg-dark text-center text-white">Created by Moizali</footer>`,
 })
 
-let Adds = `<br>
-<br>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6804075268466793" crossorigin="anonymous"></script>
-<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6804075268466793" data-ad-slot="4128170514" data-ad-format="auto" data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-<br>
-<br>
-<hr>`
 
 const Home = Vue.component('home', {
     template: `
@@ -296,7 +288,7 @@ static_JS_2 = """
     },
     mounted: async function() {
         document.querySelector('title').textContent = 'Home | Marasiya.com';
-        document.getElementById('adds').innerHTML = Adds;
+        
     },
 })
 
@@ -306,7 +298,7 @@ const Kalaam = Vue.component('kalaam', {
         <div v-if="error == null && audioobject != null && pdfobject != null" >
             <div v-for="aud in audioobject">
                 <h5>{{aud.filename}}</h5>
-                <audio controls="controls" preload='none'><source :src=aud.audiolink></audio>
+                <iframe :src=aud.audiolink width="350" height="60" allow="autoplay" ></iframe>
                 <br>
                 <a :href=aud.downloadlink target="_blank"><button class="button">Download Audio</button></a>
                 <br><hr>
@@ -322,7 +314,7 @@ const Kalaam = Vue.component('kalaam', {
         <div v-else-if="error == null && audioobject != null && pdfobject == null" >
             <div v-for="aud in audioobject">
                 <h5>{{aud.filename}}</h5>
-                <audio controls="controls" preload='none'><source :src=aud.audiolink></audio>
+                <iframe :src=aud.audiolink width="350" height="60" allow="autoplay" ></iframe>
                 <br>
                 <a :href=aud.downloadlink target="_blank"><button class="button">Download Audio</button></a>
                 <br><hr>
@@ -386,7 +378,7 @@ const Kalaam = Vue.component('kalaam', {
                             for(let audios=0;audios<CurrentObject[j].audio.length;audios++){
                                 tempaudioobjectchild = {
                                                         filename:CurrentObject[j].audio[audios].filename,
-                                                        audiolink:"https://docs.google.com/uc?export=download&id=" + CurrentObject[j].audio[audios].audioid,
+                                                        audiolink:"https://drive.google.com/file/d/" + CurrentObject[j].audio[audios].audioid + "/preview",
                                                         downloadlink:"https://drive.google.com/uc?authuser=0&id=" + CurrentObject[j].audio[audios].audioid + "&export=download",
                                 }
                                 tempaudioobject.push(tempaudioobjectchild)
@@ -417,66 +409,66 @@ const Kalaam = Vue.component('kalaam', {
             }
         }
         document.querySelector('title').textContent = this.title + ' | ' + this.category + ' | ' + 'Marasiya.com';
-        document.getElementById('adds').innerHTML = Adds;
+        
         window.scrollTo(0, 0);
     },
 })
 
 const Dua = Vue.component('dua', {template: `<div><h3> {{componentname}} </h3><ol><li v-for="titleind in db"><router-link :to="{ path: titleind.path }">{{titleind.name}}</router-link></li></ol></div>`,
     data: function() {return {db: [],componentname:"Dua"}},
-    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';document.getElementById('adds').innerHTML = Adds;},})
+    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';},})
 
 const Iltija = Vue.component('iltija', {template: `<div><h3> {{componentname}} </h3><ol><li v-for="titleind in db"><router-link :to="{ path: titleind.path }">{{titleind.name}}</router-link></li></ol><hr></div>`,
     data: function() {return {db: [],componentname:"Iltija"}},
-    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';document.getElementById('adds').innerHTML = Adds;},})
+    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';},})
 
 const Madeh = Vue.component('madeh', {template: `<div><h3> {{componentname}} </h3><ol><li v-for="titleind in db"><router-link :to="{ path: titleind.path }">{{titleind.name}}</router-link></li></ol><hr></div>`,
     data: function() {return {db: [],componentname:"Madeh"}},
-    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';document.getElementById('adds').innerHTML = Adds;},})
+    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';},})
 
 const Manaqabat = Vue.component('manaqabat', {template: `<div><h3> {{componentname}} </h3><ol><li v-for="titleind in db"><router-link :to="{ path: titleind.path }">{{titleind.name}}</router-link></li></ol><hr></div>`,
     data: function() {return {db: [],componentname:"Manaqabat"}},
-    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';document.getElementById('adds').innerHTML = Adds;},})
+    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';},})
 
 const Marasiya = Vue.component('marasiya', {template: `<div><h3> {{componentname}} </h3><ol><li v-for="titleind in db"><router-link :to="{ path: titleind.path }">{{titleind.name}}</router-link></li></ol><hr></div>`,
     data: function() {return {db: [],componentname:"Marasiya"}},
-    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';document.getElementById('adds').innerHTML = Adds;},})
+    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';},})
 
 const Misc = Vue.component('misc', {template: `<div><h3> {{componentname}} </h3><ol><li v-for="titleind in db"><router-link :to="{ path: titleind.path }">{{titleind.name}}</router-link></li></ol><hr></div>`,
     data: function() {return {db: [],componentname:"Misc"}},
-    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';document.getElementById('adds').innerHTML = Adds;},})
+    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';},})
 
 const Naat = Vue.component('naat', {template: `<div><h3> {{componentname}} </h3><ol><li v-for="titleind in db"><router-link :to="{ path: titleind.path }">{{titleind.name}}</router-link></li></ol><hr></div>`,
     data: function() {return {db: [],componentname:"Naat"}},
-    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';document.getElementById('adds').innerHTML = Adds;},})
+    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';},})
 
 const Namaz = Vue.component('namaz', {template: `<div><h3> {{componentname}} </h3><ol><li v-for="titleind in db"><router-link :to="{ path: titleind.path }">{{titleind.name}}</router-link></li></ol><hr></div>`,
     data: function() {return {db: [],componentname:"Namaz"}},
-    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';document.getElementById('adds').innerHTML = Adds;},})
+    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';},})
 
 const Nasihat = Vue.component('nasihat', {template: `<div><h3> {{componentname}} </h3><ol><li v-for="titleind in db"><router-link :to="{ path: titleind.path }">{{titleind.name}}</router-link></li></ol><hr></div>`,
     data: function() {return {db: [],componentname:"Nasihat"}},
-    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';document.getElementById('adds').innerHTML = Adds;},})
+    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';},})
 
 const Qasida = Vue.component('qasida', {template: `<div><h3> {{componentname}} </h3><ol><li v-for="titleind in db"><router-link :to="{ path: titleind.path }">{{titleind.name}}</router-link></li></ol><hr></div>`,
     data: function() {return {db: [],componentname:"Qasida"}},
-    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';document.getElementById('adds').innerHTML = Adds;},})
+    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';},})
 
 const QuranChapters = Vue.component('quranchapters', {template: `<div><h3> {{componentname}} </h3><ol><li v-for="titleind in db"><router-link :to="{ path: titleind.path }">{{titleind.name}}</router-link></li></ol><hr></div>`,
     data: function() {return {db: [],componentname:"Quran-Chapters"}},
-    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';document.getElementById('adds').innerHTML = Adds;},})
+    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';},})
 
 const QuranJuz = Vue.component('quranjuz', {template: `<div><h3> {{componentname}} </h3><ol><li v-for="titleind in db"><router-link :to="{ path: titleind.path }">{{titleind.name}}</router-link></li></ol><hr></div>`,
     data: function() {return {db: [],componentname:"Quran-Juz"}},
-    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';document.getElementById('adds').innerHTML = Adds;},})
+    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';},})
 
 const Rasa = Vue.component('rasa', {template: `<div><h3> {{componentname}} </h3><ol><li v-for="titleind in db"><router-link :to="{ path: titleind.path }">{{titleind.name}}</router-link></li></ol><hr></div>`,
     data: function() {return {db: [],componentname:"Rasa"}},
-    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';document.getElementById('adds').innerHTML = Adds;},})
+    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';},})
 
 const Salaam = Vue.component('salaam', {template: `<div><h3> {{componentname}} </h3><ol><li v-for="titleind in db"><router-link :to="{ path: titleind.path }">{{titleind.name}}</router-link></li></ol><hr></div>`,
     data: function() {return {db: [],componentname:"Salaam"}},
-    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';document.getElementById('adds').innerHTML = Adds;},})
+    mounted: async function() {rawdata = null;for (let i=0;i < database.length;i++){if(database[i].category === this.componentname){rawdata = database[i].data}}for(let j=0;j<rawdata.length;j++){tempobj = {name: rawdata[j].title,path: "/"+this.componentname+"/"+rawdata[j].title,};this.db.push(tempobj)}document.querySelector('title').textContent = this.componentname + ' | ' + 'Marasiya.com';},})
 
 const NotFound = { template: '<p>Page not found</p>' }
 
@@ -555,9 +547,11 @@ for(index=0;index<database.length;index++){
 document.querySelector('meta[name="description"]').content = Description"""
 
 def update_app_js():
-    ouputfile = open("Site/static/app.js","w",encoding="utf-8")
+    ouputfile = open("Site/static/data.js","w",encoding="utf-8")
     ouputfile.writelines(databaseGenerator())
     ouputfile.writelines("\n")
+    ouputfile.close()
+    ouputfile = open("Site/static/app.js","w",encoding="utf-8")
     ouputfile.writelines(static_JS_1)
     ouputfile.writelines(titleDataGenerator())
     ouputfile.writelines(static_JS_2)

@@ -17,14 +17,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
     <link rel="stylesheet" href="static/style.css" >
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HP0F1YQG4P"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-HP0F1YQG4P');
-    </script>
   </head>
   <body>
     <div id="loading">Loading App.<br>This may take a while depending on your network speed.<br>Please wait...</div>
@@ -32,9 +24,9 @@
       <Navbar></Navbar>
       <router-view></router-view>
     </div>
-    <div id="adds"></div>
     <footer class="bg-dark text-center text-white">Created by Moizali</footer>
   </body>
+  <script src="static/data.js" ></script>
   <script src="static/app.js" ></script>
   <script>
     $('.navbar-collapse a').click(function(){
